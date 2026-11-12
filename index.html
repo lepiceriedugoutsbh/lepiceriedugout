@@ -1591,16 +1591,16 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
   </div>
   <div class="galerie-row-1">
     <div class="galerie-item g-tall" onclick="galerieOpen(2)">
-      <img src="images/img_010.jpg" alt="La Cave">
+      <img src="images/cave-tonneaux.jpg" alt="La Cave">
       <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_cave">La Cave · St Barth</span></span></div>
     </div>
     <div class="galerie-col-right">
       <div class="galerie-item g-landscape" onclick="galerieOpen(4)">
-        <img src="images/img_012.jpg" alt="Épicerie Fine">
+        <img src="images/epicerie-etageres.jpg" alt="Épicerie Fine">
         <div class="galerie-ov"><span class="galerie-ov-label">Épicerie Fine</span></div>
       </div>
       <div class="galerie-item g-landscape" onclick="galerieOpen(5)">
-        <img src="images/img_013.jpg" alt="Wine Bar">
+        <img src="images/table-verres.jpg" alt="Wine Bar">
         <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_bar">L'Ambiance Wine Bar</span></span></div>
       </div>
     </div>
@@ -1611,15 +1611,15 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
       <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_coffee">St Barts Coffee Roaster</span></span></div>
     </div>
     <div class="galerie-item g-port" onclick="galerieOpen(0)">
-      <img src="images/img_008.jpg" alt="La Scène">
+      <img src="images/scene-projecteur.jpg" alt="La Scène">
       <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_scene">La Scène Live</span></span></div>
     </div>
     <div class="galerie-item g-port" onclick="galerieOpen(1)">
-      <img src="images/img_009.jpg" alt="Cave à Vins">
+      <img src="images/casier-bourgogne.jpg" alt="Cave à Vins">
       <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_vins">Cave à Vins</span></span></div>
     </div>
     <div class="galerie-item g-port" onclick="galerieOpen(6)">
-      <img src="images/img_014.jpg" alt="Wine o'Clock">
+      <img src="images/scene-guitare.jpg" alt="Wine o'Clock">
       <div class="galerie-ov"><span class="galerie-ov-label"><span data-key="galerie_wine">Wine o'Clock</span></span></div>
     </div>
   </div>
@@ -1631,7 +1631,7 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
   <button class="galerie-lb-next" onclick="galerieNav(1)">›</button>
 </div>
 <script>
-var _galerie = ["images/img_008.jpg","images/img_009.jpg","images/img_010.jpg","images/img_011.jpg","images/img_012.jpg","images/img_013.jpg","images/img_014.jpg"];
+var _galerie = ["images/scene-projecteur.jpg","images/casier-bourgogne.jpg","images/cave-tonneaux.jpg","images/img_011.jpg","images/epicerie-etageres.jpg","images/table-verres.jpg","images/scene-guitare.jpg"];
 var _galIdx = 0;
 function galerieOpen(i) { _galIdx=i; document.getElementById('galerie-lb-img').src=_galerie[i]; document.getElementById('galerie-lb').classList.add('open'); document.body.style.overflow='hidden'; }
 function galerieClose() { document.getElementById('galerie-lb').classList.remove('open'); document.body.style.overflow=''; }
@@ -1641,7 +1641,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <img class="hero-photo" src="images/img_035.jpg" alt="L'Épicerie du Goût — La Cave" style="opacity:.4;filter:saturate(0.75) brightness(0.65);">
+  <img class="hero-photo" src="images/scene-projecteur.jpg" alt="L'Épicerie du Goût — La Cave" style="opacity:.4;filter:saturate(0.75) brightness(0.65);">
   <div class="hero-gradient"></div>
   <div class="hero-lines"></div>
 
@@ -1698,8 +1698,8 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
 
     <!-- Photo 3 -->
     <div class="gallery-cell">
-      <img class="gallery-photo" loading="lazy" src="images/img_022.jpg" alt="Scène & Cave à Vins">
-      <img src="images/img_035.jpg" alt="La Cave" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.9);transition:transform .7s ease,filter .3s;">
+      <img class="gallery-photo" loading="lazy" src="images/live-music.jpg" alt="Scène & Cave à Vins">
+      <img src="images/scene-projecteur.jpg" alt="La Cave" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.9);transition:transform .7s ease,filter .3s;">
       <div class="gallery-overlay"></div>
       <span class="g-num">03</span>
       <div class="gallery-label">
@@ -1721,8 +1721,8 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
 
     <!-- Photo 5 -->
     <div class="gallery-cell">
-      <img class="gallery-photo" loading="lazy" src="images/img_022.jpg" alt="La Scène Live">
-      <img src="images/img_023.jpg" alt="La Cave — Scène" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.82) saturate(.92);transition:transform .7s ease,filter .3s;">
+      <img class="gallery-photo" loading="lazy" src="images/live-music.jpg" alt="La Scène Live">
+      <img src="images/scene-guitare.jpg" alt="La Cave — Scène" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.82) saturate(.92);transition:transform .7s ease,filter .3s;">
       <div class="gallery-overlay"></div>
       <span class="g-num">05</span>
       <div class="gallery-label">
@@ -1733,7 +1733,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
 
     <!-- Photo 6 -->
     <div class="gallery-cell">
-      <img class="gallery-photo" loading="lazy" src="images/img_024.jpg" alt="Sous les étoiles">
+      <img class="gallery-photo" loading="lazy" src="images/entree-terrasse.jpg" alt="Sous les étoiles">
       <div class="gallery-overlay"></div>
       <span class="g-num">06</span>
       <div class="gallery-label">
@@ -2404,7 +2404,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
         <div class="insta-ov"><div class="insta-ov-icon">♥</div><div class="insta-ov-label">Épicerie fine</div></div>
       </div>
       <div class="insta-cell">
-        <img class="insta-photo" loading="lazy" src="images/img_035.jpg" alt="L'Épicerie du Goût" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(.9);transition:transform .5s ease;">
+        <img class="insta-photo" loading="lazy" src="images/scene-projecteur.jpg" alt="L'Épicerie du Goût" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(.9);transition:transform .5s ease;">
         <div class="insta-fallback ib3"></div>
         <div class="insta-ov"><div class="insta-ov-icon">♥</div><div class="insta-ov-label">La Cave</div></div>
       </div>
@@ -2414,7 +2414,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
         <div class="insta-ov"><div class="insta-ov-icon">♥</div><div class="insta-ov-label">Dégustation</div></div>
       </div>
       <div class="insta-cell">
-        <img class="insta-photo" loading="lazy" src="images/img_036.jpg" alt="Scène Live" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.88) saturate(.9);transition:transform .5s ease;">
+        <img class="insta-photo" loading="lazy" src="images/live-music.jpg" alt="Scène Live" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.88) saturate(.9);transition:transform .5s ease;">
         <div class="insta-ov"><div class="insta-ov-icon">♥</div><div class="insta-ov-label">La scène</div></div>
       </div>
       <div class="insta-cell">
