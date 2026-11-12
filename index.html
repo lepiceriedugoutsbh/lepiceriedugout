@@ -2174,7 +2174,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
       <div class="reveal" style="position:relative;">
         <div class="wb-img-wrap">
           <div class="wb-img">
-            <img class="wb-photo" src="images/img_034.jpg" alt="L'Épicerie du Goût Wine Bar" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.88);">
+            <img class="wb-photo" src="images/champagne-seau.jpg" alt="Champagne au seau et deux coupes" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.88);">
             <div class="wb-fallback" style="display:none;">
               <svg width="260" height="380" viewBox="0 0 260 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 60px rgba(107,39,55,0.5));">
   <defs>
@@ -3000,6 +3000,16 @@ document.addEventListener('keydown', function(e) {
 
 
 
+<!-- POPUP ÉVÉNEMENT DE LA SEMAINE — modifier image, textes et data-until chaque semaine -->
+<div class="popup-soiree" id="popup-soiree" data-until="2026-11-14T02:00:00-04:00" data-id="paranormale-2026-11-13">
+  <div class="popup-soiree-inner">
+    <button class="popup-soiree-close" onclick="closePopupSoiree()" aria-label="Fermer">✕</button>
+    <img src="images/affiche-paranormale.jpg" alt="Soirée Paranormale — vendredi 13 novembre, 19h" style="width:100%;display:block;border-radius:4px 4px 0 0;">
+    <a class="popup-soiree-cta" href="https://wa.me/590690302514?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20pour%20la%20Soir%C3%A9e%20Paranormale%20du%20vendredi%2013%20novembre%20!" target="_blank" rel="noopener"><span data-key="popup_cta">💬 Je réserve ma place</span></a>
+    <span class="popup-soiree-skip" onclick="closePopupSoiree()"><span data-key="popup_skip">Fermer · Voir le site</span></span>
+  </div>
+</div>
+
 <script>
 // ─── TRADUCTION COMPLÈTE FR / EN ───
 var LANG = {
@@ -3424,13 +3434,15 @@ function setLang(lang) {
 // Init au chargement
 document.addEventListener('DOMContentLoaded', function() {
   setLang(currentLang);
-  // Popup karaoké
-  var closed = localStorage.getItem('popup_karaoke_closed');
-  if (!closed || (Date.now() - parseInt(closed)) > 24*60*60*1000) {
-    setTimeout(function() {
-      var popup = document.getElementById('popup-soiree');
-      if (popup) { popup.classList.add('open'); document.body.style.overflow='hidden'; }
-    }, 2000);
+  // Popup événement de la semaine : disparaît seul après la date data-until
+  var popup = document.getElementById('popup-soiree');
+  if (popup) {
+    var until = Date.parse(popup.getAttribute('data-until') || '');
+    var closed = null;
+    try { closed = localStorage.getItem('popup_closed_' + popup.getAttribute('data-id')); } catch(e) {}
+    if ((!until || Date.now() < until) && !(closed && (Date.now() - parseInt(closed)) < 24*60*60*1000)) {
+      setTimeout(function() { popup.classList.add('open'); document.body.style.overflow='hidden'; }, 2000);
+    }
   }
 });
 
@@ -3438,7 +3450,7 @@ function closePopupSoiree() {
   var popup = document.getElementById('popup-soiree');
   if (popup) popup.classList.remove('open');
   document.body.style.overflow = '';
-  localStorage.setItem('popup_karaoke_closed', Date.now());
+  try { localStorage.setItem('popup_closed_' + (popup ? popup.getAttribute('data-id') : ''), Date.now()); } catch(e) {}
 }
 document.addEventListener('click', function(e) {
   var popup = document.getElementById('popup-soiree');
