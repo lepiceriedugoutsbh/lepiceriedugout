@@ -1479,6 +1479,10 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
 .flyer-link:hover { background:rgba(184,146,74,.08); }
 .flyer-link .mai-name::after { content:" ›"; color:var(--gold); opacity:.7; }
 #flyer-modal img { max-height:80vh; width:auto; max-width:100%; margin:0 auto; }
+#popup-soiree .popup-soiree-inner { max-width: min(720px, 94vw); }
+.popup-video-wrap { position: relative; }
+.popup-sound { position:absolute; left:12px; bottom:12px; background:rgba(10,8,6,.75); color:#f5ead2; border:1px solid rgba(212,169,79,.6); border-radius:20px; padding:.45rem .9rem; font-size:.8rem; letter-spacing:.05em; cursor:pointer; }
+.popup-sound:hover { background:rgba(10,8,6,.9); }
 /* ─── POPUP SOIRÉE À VENIR ─── */
 .popup-soiree {
   display: none;
@@ -3045,7 +3049,13 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 <div class="popup-soiree" id="popup-soiree" data-until="2026-11-14T02:00:00-04:00" data-id="paranormale-2026-11-13">
   <div class="popup-soiree-inner">
     <button class="popup-soiree-close" onclick="closePopupSoiree()" aria-label="Fermer">✕</button>
-    <img src="images/affiche-paranormale.jpg" alt="Soirée Paranormale — vendredi 13 novembre, 19h" style="width:100%;display:block;border-radius:4px 4px 0 0;">
+    <div class="popup-video-wrap">
+      <video id="popup-video" playsinline muted loop preload="none" poster="videos/spot-paranormale.jpg" style="width:100%;display:block;border-radius:4px 4px 0 0;background:#000;">
+        <source src="videos/spot-paranormale.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="popup-sound" onclick="togglePopupSound(this)" aria-label="Activer le son">🔇 <span data-key="popup_sound">Activer le son</span></button>
+    </div>
+    <img src="images/affiche-paranormale.jpg" alt="Soirée Paranormale — vendredi 13 novembre, 19h" style="width:100%;display:none;">
     <a class="popup-soiree-cta" href="https://wa.me/590690302514?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20pour%20la%20Soir%C3%A9e%20Paranormale%20du%20vendredi%2013%20novembre%20!" target="_blank" rel="noopener"><span data-key="popup_cta">💬 Je réserve ma place</span></a>
     <span class="popup-soiree-skip" onclick="closePopupSoiree()"><span data-key="popup_skip">Fermer · Voir le site</span></span>
   </div>
@@ -3246,6 +3256,7 @@ var LANG = {
 
     // Popup karaoké
     "popup_cta": "💬 Je réserve ma place",
+    "popup_sound": "Activer le son",
     "popup_skip": "Fermer · Voir le site",
 
     // Footer
@@ -3444,6 +3455,7 @@ var LANG = {
 
     // Popup
     "popup_cta": "💬 Reserve my spot",
+    "popup_sound": "Turn sound on",
     "popup_skip": "Close · See the site",
 
     // Footer
@@ -3492,12 +3504,23 @@ document.addEventListener('DOMContentLoaded', function() {
     var closed = null;
     try { closed = localStorage.getItem('popup_closed_' + popup.getAttribute('data-id')); } catch(e) {}
     if ((!until || Date.now() < until) && !(closed && (Date.now() - parseInt(closed)) < 24*60*60*1000)) {
-      setTimeout(function() { popup.classList.add('open'); document.body.style.overflow='hidden'; }, 2000);
+      setTimeout(function() {
+        popup.classList.add('open'); document.body.style.overflow='hidden';
+        var v = document.getElementById('popup-video');
+        if (v) { try { v.load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } catch(e) {} }
+      }, 2000);
     }
   }
 });
 
+function togglePopupSound(btn) {
+  var v = document.getElementById('popup-video'); if (!v) return;
+  v.muted = !v.muted;
+  if (!v.muted) { v.currentTime = 0; v.loop = false; v.play(); }
+  btn.firstChild.textContent = v.muted ? '🔇 ' : '🔊 ';
+}
 function closePopupSoiree() {
+  var pv = document.getElementById('popup-video'); if (pv) pv.pause();
   var popup = document.getElementById('popup-soiree');
   if (popup) popup.classList.remove('open');
   document.body.style.overflow = '';
