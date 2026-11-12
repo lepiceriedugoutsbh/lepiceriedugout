@@ -1475,6 +1475,8 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
 
 
 .reels-grid { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
+.reel-item { flex:1 1 300px; max-width:400px; min-width:0; }
+.reel-item iframe { min-width:0 !important; width:100% !important; }
 /* ─── FLYER AU CLIC SUR UNE SOIRÉE ─── */
 .flyer-link { cursor:pointer; transition:background .2s; }
 .flyer-link:hover { background:rgba(184,146,74,.08); }
@@ -2456,9 +2458,16 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
     <div class="reels-wrap reveal">
       <p class="section-label" style="text-align:center;margin:3.5rem 0 1.5rem;"><span data-key="reels_label">Nos soirées en vidéo</span></p>
       <div class="reels-grid">
+        <div class="reel-item">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DczQm5ijOSE/" data-instgrm-version="14" style="margin:0 auto;max-width:400px;width:100%;min-width:280px;background:#fff;border:0;border-radius:6px;">
           <a href="https://www.instagram.com/reel/DczQm5ijOSE/" target="_blank" rel="noopener" style="display:block;padding:2rem;text-align:center;color:#6b2737;">▶ Voir la vidéo sur Instagram</a>
         </blockquote>
+        </div>
+        <div class="reel-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYR4tlQuAGu/" data-instgrm-version="14" style="margin:0 auto;max-width:400px;width:100%;min-width:280px;background:#fff;border:0;border-radius:6px;">
+          <a href="https://www.instagram.com/reel/DYR4tlQuAGu/" target="_blank" rel="noopener" style="display:block;padding:2rem;text-align:center;color:#6b2737;">▶ Voir la vidéo sur Instagram</a>
+        </blockquote>
+        </div>
       </div>
     </div>
     <script>
