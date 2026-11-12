@@ -1474,6 +1474,7 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
 }
 
 
+.reels-grid { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
 /* ─── FLYER AU CLIC SUR UNE SOIRÉE ─── */
 .flyer-link { cursor:pointer; transition:background .2s; }
 .flyer-link:hover { background:rgba(184,146,74,.08); }
@@ -2450,6 +2451,28 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
         <div class="insta-ov"><div class="insta-ov-icon">♥</div><div class="insta-ov-label">Terrasse SBH</div></div>
       </a>
     </div>
+
+    <!-- REELS INSTAGRAM (le script Instagram ne se charge que quand on arrive ici) -->
+    <div class="reels-wrap reveal">
+      <p class="section-label" style="text-align:center;margin:3.5rem 0 1.5rem;"><span data-key="reels_label">Nos soirées en vidéo</span></p>
+      <div class="reels-grid">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DczQm5ijOSE/" data-instgrm-version="14" style="margin:0 auto;max-width:400px;width:100%;min-width:280px;background:#fff;border:0;border-radius:6px;">
+          <a href="https://www.instagram.com/reel/DczQm5ijOSE/" target="_blank" rel="noopener" style="display:block;padding:2rem;text-align:center;color:#6b2737;">▶ Voir la vidéo sur Instagram</a>
+        </blockquote>
+      </div>
+    </div>
+    <script>
+    (function() {
+      var w = document.querySelector('.reels-wrap'); if (!w) return;
+      var load = function() {
+        if (window.instgrm) { window.instgrm.Embeds.process(); return; }
+        var s = document.createElement('script'); s.async = true; s.src = 'https://www.instagram.com/embed.js'; document.body.appendChild(s);
+      };
+      if (!('IntersectionObserver' in window)) { load(); return; }
+      var io = new IntersectionObserver(function(es) { if (es[0].isIntersecting) { io.disconnect(); load(); } }, { rootMargin: '400px' });
+      io.observe(w);
+    })();
+    </script>
   </div>
 </section>
 
@@ -3257,6 +3280,7 @@ var LANG = {
     // Popup karaoké
     "popup_cta": "💬 Je réserve ma place",
     "popup_sound": "Activer le son",
+    "reels_label": "Nos soirées en vidéo",
     "popup_skip": "Fermer · Voir le site",
 
     // Footer
@@ -3456,6 +3480,7 @@ var LANG = {
     // Popup
     "popup_cta": "💬 Reserve my spot",
     "popup_sound": "Turn sound on",
+    "reels_label": "Our nights on video",
     "popup_skip": "Close · See the site",
 
     // Footer
