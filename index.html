@@ -2008,7 +2008,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
             <div class="mai-event flyer-link" role="button" tabindex="0" data-flyer="images/flyers/electro.jpg" onclick="openFlyer(this)" onkeydown="if(event.key==='Enter')openFlyer(this)">
               <span class="mai-date">Sam 21 Novembre</span>
               <span class="mai-sep">—</span>
-              <span class="mai-name">🎧 Soirée Électro · DJ Guillaumas</span>
+              <span class="mai-name">🎧 Soirée Électro · DJ Guillaume Mas</span>
             </div>
             <div class="mai-event flyer-link" role="button" tabindex="0" data-flyer="images/flyers/bingo.jpg" onclick="openFlyer(this)" onkeydown="if(event.key==='Enter')openFlyer(this)">
               <span class="mai-date">Ven 27 Novembre</span>
@@ -2022,7 +2022,7 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
             </div>
           </div>
           <div class="mai-cta">
-            <span>Tous les vendredis &amp; samedis dès 19h · Happy Hours du mardi au samedi, 18h–19h</span>
+            <span>Tous les vendredis &amp; samedis dès 19h · <a class="flyer-link" role="button" tabindex="0" data-flyer="images/flyers/happy-hours.jpg" onclick="openFlyer(this)" style="color:var(--gold);text-decoration:underline;"><span class="mai-name">Happy Hours</span></a> du mardi au samedi, 18h–19h</span>
             <a href="https://wa.me/590690302514" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;padding:.7rem 1.8rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;transition:all .3s;" onmouseover="this.style.background='var(--gold)';this.style.color='#1A1410'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">
               Réserver → 0690 30 25 14
             </a>
@@ -3028,9 +3028,9 @@ function openFlyer(el) {
   var date = (el.querySelector('.mai-date') || {}).textContent || '';
   img.onerror = function() { img.onerror = null; img.src = 'images/affiche-novembre.jpg'; };
   img.src = el.getAttribute('data-flyer');
-  img.alt = name.trim() + ' — ' + date.trim();
+  img.alt = name.trim() + (date.trim() ? ' — ' + date.trim() : '');
   document.getElementById('flyer-cta').href = 'https://wa.me/590690302514?text=' +
-    encodeURIComponent('Bonjour, je souhaite réserver pour ' + name.replace(/^[^A-Za-zÀ-ÿ]+/, '').trim() + ' (' + date.trim() + ') !');
+    encodeURIComponent('Bonjour, je souhaite réserver pour ' + name.replace(/^[^A-Za-zÀ-ÿ]+/, '').trim() + (date.trim() ? ' (' + date.trim() + ')' : '') + ' !');
   document.getElementById('flyer-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
