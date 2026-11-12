@@ -2477,8 +2477,10 @@ document.addEventListener('keydown',function(e){ var lb=document.getElementById(
         if (window.instgrm) { window.instgrm.Embeds.process(); return; }
         var s = document.createElement('script'); s.async = true; s.src = 'https://www.instagram.com/embed.js'; document.body.appendChild(s);
       };
-      if (!('IntersectionObserver' in window)) { load(); return; }
-      var io = new IntersectionObserver(function(es) { if (es[0].isIntersecting) { io.disconnect(); load(); } }, { rootMargin: '400px' });
+      var done = false; var go = function() { if (done) return; done = true; load(); };
+      window.addEventListener('load', function() { setTimeout(go, 2500); });
+      if (!('IntersectionObserver' in window)) { go(); return; }
+      var io = new IntersectionObserver(function(es) { if (es[0].isIntersecting) { io.disconnect(); go(); } }, { rootMargin: '400px' });
       io.observe(w);
     })();
     </script>
