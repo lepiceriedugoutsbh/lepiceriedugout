@@ -1567,6 +1567,14 @@ footer{background:#060402;padding:4rem 0 2rem;border-top:1px solid rgba(184,146,
   transition: color .2s;
 }
 .popup-soiree-skip:hover { color: rgba(245,240,232,0.7); }
+#popup-soiree .popup-duo { max-width: min(760px, 94vw); max-height: 94vh; overflow-y: auto; padding: 16px 16px 4px; }
+#popup-soiree .popup-duo .popup-soiree-close { top: 0; right: 0; }
+.popup-duo-title { text-align:center; color:var(--gold); font-size:.75rem; letter-spacing:.25em; text-transform:uppercase; margin-bottom:.8rem; }
+.popup-duo-grid { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; align-items:start; }
+.popup-duo-item img { aspect-ratio:2/3; object-fit:contain; background:#0a0806; }
+.popup-duo-item .popup-soiree-cta { font-size:.62rem; letter-spacing:.15em; padding:.75rem .4rem; }
+.popup-duo-hh { text-align:center; color:#f5ead2; font-size:.8rem; margin-top:.9rem; line-height:1.5; }
+@media (max-width:520px) { .popup-duo-grid { gap:.5rem; } .popup-duo-item .popup-soiree-cta { font-size:.55rem; letter-spacing:.08em; } .popup-duo-hh { font-size:.72rem; } }
 
 </style>
 </head>
@@ -3100,17 +3108,21 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 </script>
 
 <!-- POPUP ÉVÉNEMENT DE LA SEMAINE — modifier image, textes et data-until chaque semaine -->
-<div class="popup-soiree" id="popup-soiree" data-until="2026-11-14T02:00:00-04:00" data-id="paranormale-2026-11-13">
-  <div class="popup-soiree-inner">
+<div class="popup-soiree" id="popup-soiree" data-until="2026-11-22T02:00:00-04:00" data-id="semaine-2026-11-16">
+  <div class="popup-soiree-inner popup-duo">
     <button class="popup-soiree-close" onclick="closePopupSoiree()" aria-label="Fermer">✕</button>
-    <div class="popup-video-wrap">
-      <video id="popup-video" playsinline muted loop preload="none" poster="videos/spot-paranormale.jpg" style="width:100%;display:block;border-radius:4px 4px 0 0;background:#000;">
-        <source src="videos/spot-paranormale.mp4" type="video/mp4">
-      </video>
-      <button type="button" class="popup-sound" onclick="togglePopupSound(this)" aria-label="Activer le son">🔇 <span data-key="popup_sound">Activer le son</span></button>
+    <div class="popup-duo-title"><span data-key="popup_week_title">Cette semaine à l'Épicerie</span></div>
+    <div class="popup-duo-grid">
+      <div class="popup-duo-item">
+        <img src="images/flyers/beaujolais.jpg" alt="Soirée Beaujolais nouveau — vendredi 20 novembre, dès 19h">
+        <a class="popup-soiree-cta" href="https://wa.me/590690302514?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20pour%20la%20soir%C3%A9e%20Beaujolais%20nouveau%20du%20vendredi%2020%20novembre%20!" target="_blank" rel="noopener"><span data-key="popup_cta_fri">💬 Réserver vendredi</span></a>
+      </div>
+      <div class="popup-duo-item">
+        <img src="images/flyers/electro.jpg" alt="Soirée électro avec DJ Guillaume Mas — samedi 21 novembre, dès 19h">
+        <a class="popup-soiree-cta" href="https://wa.me/590690302514?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20pour%20la%20soir%C3%A9e%20%C3%A9lectro%20du%20samedi%2021%20novembre%20!" target="_blank" rel="noopener"><span data-key="popup_cta_sat">💬 Réserver samedi</span></a>
+      </div>
     </div>
-    <img src="images/affiche-paranormale.jpg" alt="Soirée Paranormale — vendredi 13 novembre, 19h" style="width:100%;display:none;">
-    <a class="popup-soiree-cta" href="https://wa.me/590690302514?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20pour%20la%20Soir%C3%A9e%20Paranormale%20du%20vendredi%2013%20novembre%20!" target="_blank" rel="noopener"><span data-key="popup_cta">💬 Je réserve ma place</span></a>
+    <div class="popup-duo-hh"><span data-key="popup_hh">Happy Hours du mardi au samedi, 18h–19h : un verre acheté, un verre offert</span></div>
     <span class="popup-soiree-skip" onclick="closePopupSoiree()"><span data-key="popup_skip">Fermer · Voir le site</span></span>
   </div>
 </div>
@@ -3313,6 +3325,10 @@ var LANG = {
     "popup_sound": "Activer le son",
     "reels_label": "Nos soirées en vidéo",
     "popup_skip": "Fermer · Voir le site",
+    "popup_week_title": "Cette semaine à l'Épicerie",
+    "popup_cta_fri": "💬 Réserver vendredi",
+    "popup_cta_sat": "💬 Réserver samedi",
+    "popup_hh": "Happy Hours du mardi au samedi, 18h–19h : un verre acheté, un verre offert",
 
     // Footer
     "footer_rights": "© 2026 L'Épicerie du Goût Wine Bar · Saint-Barthélemy · Tous droits réservés",
@@ -3513,6 +3529,10 @@ var LANG = {
     "popup_sound": "Turn sound on",
     "reels_label": "Our nights on video",
     "popup_skip": "Close · See the site",
+    "popup_week_title": "This week at the Épicerie",
+    "popup_cta_fri": "💬 Book Friday",
+    "popup_cta_sat": "💬 Book Saturday",
+    "popup_hh": "Happy Hours Tuesday to Saturday, 6–7pm: buy one glass, get one free",
 
     // Footer
     "footer_rights": "© 2026 L'Épicerie du Goût Wine Bar · Saint-Barthélemy · All rights reserved",
